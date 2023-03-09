@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_012612) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_09_193150) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_012612) do
     t.bigint "view_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["artwork_id", "view_id"], name: "index_artwork_shares_on_artwork_id_and_view_id", unique: true
     t.index ["artwork_id"], name: "index_artwork_shares_on_artwork_id"
     t.index ["view_id"], name: "index_artwork_shares_on_view_id"
   end

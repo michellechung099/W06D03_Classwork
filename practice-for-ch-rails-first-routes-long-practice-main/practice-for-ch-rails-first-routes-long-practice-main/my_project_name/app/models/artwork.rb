@@ -12,7 +12,7 @@
 class Artwork < ApplicationRecord
     validates :title, presence: true
     validates :image_url, :artist_id, presence: true, uniqueness: true
-    
+
     belongs_to :artist,
         foreign_key: :artist_id,
         class_name: :User
@@ -25,4 +25,11 @@ class Artwork < ApplicationRecord
     has_many :shared_viewer,
         through: :artwork_shares,
         source: :viewer
+
+    def self.artworks_for_user_id(user_id)
+        Artwork
+            .select("artworks.*")
+            .joins(:artwork_shares)
+            .where("artworks.artist_id = #{user_id} or artwork_shares.view_id = #{user_id}")
+    end
 end

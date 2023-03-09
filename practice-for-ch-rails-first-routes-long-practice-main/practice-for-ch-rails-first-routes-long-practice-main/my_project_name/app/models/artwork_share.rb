@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class ArtworkShare < ApplicationRecord
-    validates :artwork_id, :view_id, presence: true, uniqueness: true
+    validates :artwork_id, uniqueness: {scope: :view_id}
 
     belongs_to :artwork,
         foreign_key: :artwork_id,
@@ -19,4 +19,3 @@ class ArtworkShare < ApplicationRecord
         foreign_key: :view_id,
         class_name: :User
 end
-
