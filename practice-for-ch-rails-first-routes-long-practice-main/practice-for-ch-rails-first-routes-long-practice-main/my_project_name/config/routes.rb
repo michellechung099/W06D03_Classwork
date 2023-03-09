@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :artworks, only: [:create, :update, :show, :destroy, :index]
 
+  resources :artwork_shares, only: [:create, :destroy]
+
   # get '/users', to: 'users#index'
   # post '/users', to: 'users#create'
   # get '/users/new', to: 'users#new'

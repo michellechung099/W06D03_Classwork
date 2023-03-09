@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
     def index
-        artworks = Artwork.all
+        artworks = Artwork.all 
         render json: artworks
     end
 
@@ -16,7 +16,7 @@ class ArtworksController < ApplicationController
     def show
         incoming_wildcard = params[:id]
         artwork = Artwork.find_by(id: incoming_wildcard)
-        if artwork  
+        if artwork
             render json: artwork
         else
             render json: user.errors.full_messages, status: 404

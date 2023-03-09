@@ -752,3 +752,37 @@ Processing by ArtworksController#create as */*
 Completed 201 Created in 42ms (Views: 0.4ms | ActiveRecord: 25.3ms | Allocations: 4531)
 
 
+Started POST "/artwork_shares?artwork_shares[1]&artwork_shares[2]" for 127.0.0.1 at 2023-03-09 11:05:25 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development
+You have 3 pending migrations:
+20230309010324_fix_user_table.rb
+20230309010714_create_artwork.rb
+20230309012612_create_artwork_share.rb:
+
+Started POST "/artwork_shares?artwork_shares[artwork_id]=1&artwork_shares[view_id]=2" for 127.0.0.1 at 2023-03-09 11:06:20 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development
+You have 3 pending migrations:
+20230309010324_fix_user_table.rb
+20230309010714_create_artwork.rb
+20230309012612_create_artwork_share.rb:
+
+Started POST "/artwork_shares?artwork_shares[artwork_id]=1&artwork_shares[view_id]=2" for 127.0.0.1 at 2023-03-09 11:06:50 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+
+ActiveRecord::PendingMigrationError - Migrations are pending. To resolve this issue, run:
+        bin/rails db:migrate RAILS_ENV=development
+You have 3 pending migrations:
+20230309010324_fix_user_table.rb
+20230309010714_create_artwork.rb
+20230309012612_create_artwork_share.rb:
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
