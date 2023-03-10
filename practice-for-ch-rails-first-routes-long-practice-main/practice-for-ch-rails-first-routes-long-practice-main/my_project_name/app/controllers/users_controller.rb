@@ -2,8 +2,16 @@ require "byebug"
 class UsersController < ApplicationController
   def index
     # debugger
-    users = User.all
-    render json: users
+    name = params[:search]
+    user = User.where("username ILIKE '#{name}'")
+    if user.empty?
+      render json: user
+    else
+      users = User.all
+      render json: users
+    end
+    # search = params[:search]
+   
   end
 
   def create
@@ -23,7 +31,8 @@ class UsersController < ApplicationController
     if user
       render json: user
     else
-      render json: user.errors.full_messages, status: 404
+      # render json: "user does not exist"
+      redirect_to users_url
     end
   end
 
