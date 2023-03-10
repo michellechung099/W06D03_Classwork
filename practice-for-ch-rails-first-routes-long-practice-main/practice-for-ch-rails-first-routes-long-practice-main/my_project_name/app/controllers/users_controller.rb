@@ -4,20 +4,20 @@ class UsersController < ApplicationController
     # debugger
     name = params[:search]
     user = User.where("username ILIKE '#{name}'")
-    if user.empty?
+    if user.length > 0
       render json: user
     else
       users = User.all
       render json: users
     end
     # search = params[:search]
-   
+
   end
 
   def create
     user = User.new(user_params)
     if user.save
-      # redirect_to users_url(user.id) 
+      # redirect_to users_url(user.id)
       render json: user, status: :created #201
     else
       render json: user.errors.full_messages, status: :unprocessable_entity

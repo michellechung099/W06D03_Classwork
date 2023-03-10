@@ -33,6 +33,10 @@ class Artwork < ApplicationRecord
         inverse_of: :artwork,
         dependent: :destroy
 
+    has_many :likes,
+        as: :likeable,
+        dependent: :destroy
+
     def self.artworks_for_user_id(user_id)
         Artwork
             .select("artworks.*")

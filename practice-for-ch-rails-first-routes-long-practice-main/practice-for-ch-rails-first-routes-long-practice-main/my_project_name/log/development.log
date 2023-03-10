@@ -1683,3 +1683,112 @@ Processing by UsersController#index as */*
 Completed 200 OK in 773ms (Views: 167.7ms | ActiveRecord: 17.1ms | Allocations: 1288093)
 
 
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2439013644524809380)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20230309221648)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (34.7ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "body" text NOT NULL, "author_id" bigint NOT NULL, "artwork_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f44b1e3c8a"
+FOREIGN KEY ("author_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_cd464612c2"
+FOREIGN KEY ("artwork_id")
+  REFERENCES "artworks" ("id")
+)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE INDEX "index_comments_on_author_id" ON "comments" ("author_id")[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE INDEX "index_comments_on_artwork_id" ON "comments" ("artwork_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230309221648"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2439013644524809380)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/13" for 127.0.0.1 at 2023-03-09 16:09:31 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"mich"}, "id"=>"13"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `show'
+Completed 200 OK in 32ms (Views: 1.5ms | ActiveRecord: 9.4ms | Allocations: 10274)
+
+
+Started GET "/users/paul" for 127.0.0.1 at 2023-03-09 16:10:07 -0800
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"mich"}, "id"=>"paul"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `show'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms | Allocations: 836)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-03-09 16:10:07 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username ILIKE '')[0m
+  ↳ app/controllers/users_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 5.7ms | Allocations: 805)
+
+
+Started GET "/users/michelle" for 127.0.0.1 at 2023-03-09 16:14:37 -0800
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"mich"}, "id"=>"michelle"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `show'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 21ms (ActiveRecord: 5.4ms | Allocations: 4026)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-03-09 16:14:37 -0800
+Processing by UsersController#index as */*
+Started GET "/users/michelle" for 127.0.0.1 at 2023-03-09 16:17:09 -0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"mich"}, "id"=>"michelle"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29:in `show'
+Redirected to http://127.0.0.1:3000/users
+Completed 302 Found in 27ms (ActiveRecord: 4.7ms | Allocations: 7370)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-03-09 16:17:09 -0800
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:11:in `index'
+Completed 200 OK in 19ms (Views: 11.5ms | ActiveRecord: 6.7ms | Allocations: 3995)
+
+
+Started GET "/users/?search=michelle" for 127.0.0.1 at 2023-03-09 16:18:03 -0800
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"mich"}, "search"=>"michelle"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username ILIKE 'michelle')[0m
+  ↳ app/controllers/users_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.8ms | Allocations: 929)
+
+
+Started GET "/users/?search=zebra" for 127.0.0.1 at 2023-03-09 16:18:22 -0800
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"mich"}, "search"=>"zebra"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username ILIKE 'zebra')[0m
+  ↳ app/controllers/users_controller.rb:11:in `index'
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.7ms | Allocations: 719)
+
+
+Started GET "/users/?search=zebra" for 127.0.0.1 at 2023-03-09 16:20:20 -0800
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"mich"}, "search"=>"zebra"}
+Completed 500 Internal Server Error in 19672ms (ActiveRecord: 0.0ms | Allocations: 61031)
+
+
+
+SystemExit - exit:
+  (byebug):1:in `index'
+  app/controllers/users_controller.rb:5:in `index'
+
+Started GET "/users/?search=zebra" for 127.0.0.1 at 2023-03-09 16:20:51 -0800
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"mich"}, "search"=>"zebra"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (username ILIKE 'zebra')[0m
+  ↳ app/controllers/users_controller.rb:7:in `index'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:11:in `index'
+Completed 200 OK in 179ms (Views: 102.9ms | ActiveRecord: 10.6ms | Allocations: 1128171)
+
+
